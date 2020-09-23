@@ -1,0 +1,16 @@
+*.iml
+
+.idea/
+.gradle/
+.DS_Store/
+.externalNativeBuild/
+
+build/
+caputres/
+
+*.iml
+*.class
+*.obj
+*.o
+
+local.properties
