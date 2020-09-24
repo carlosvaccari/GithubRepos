@@ -16,7 +16,7 @@ class RepositoriesPresenter(
             .subscribe({
                 view.showRepositories(it)
             }, {
-                view.showErrorMessage(it.message)
+                view.showErrorContainer()
             })
     }
 
