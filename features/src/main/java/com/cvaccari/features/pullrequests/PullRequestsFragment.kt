@@ -2,7 +2,6 @@ package com.cvaccari.features.pullrequests
 
 import android.content.Intent
 import android.net.Uri
-import android.provider.Browser
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cvaccari.features.R
@@ -67,9 +66,7 @@ class PullRequestsFragment : BaseFragment(), PullRequestsContract.View, Recycler
     }
 
     override fun onClick(item: Any) {
-        startActivity(Intent(Intent.ACTION_VIEW, item as Uri).apply {
-            putExtra(Browser.EXTRA_APPLICATION_ID, requireContext().packageName)
-        })
+        startActivity(Intent(Intent.ACTION_VIEW, item as Uri))
     }
 
     override fun onDestroy() {
