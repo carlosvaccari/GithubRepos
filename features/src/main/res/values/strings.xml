@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    //General
+    <string name="try_again">Tentar novamente</string>
+    <string name="error">Erro</string>
+    <string name="error_generic">Um erro aconteceu. Tente novamente mais tarde.</string>
+
+</resources>

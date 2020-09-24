@@ -43,7 +43,6 @@ val networkModule = Kodein.Module("networkModule") {
         builder.build()
     }
 
-
     bind<Converter.Factory>() with provider { GsonConverterFactory.create() }
 
 }
