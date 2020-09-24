@@ -9,6 +9,21 @@
         android:id="@+id/fragment_repositories_list"
         android:name="com.cvaccari.features.repositories.RepositoriesFragment"
         android:label="RepositoriesFragment"
-        tools:layout="@layout/fragment_repositories_list"/>
+        tools:layout="@layout/fragment_repositories_list">
+        <action
+            android:id="@+id/action_fragment_repositories_list_to_fragment_pull_requests_list"
+            app:destination="@id/fragment_pull_requests_list" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_pull_requests_list"
+        android:name="com.cvaccari.features.pullrequests.PullRequestsFragment"
+        android:label="PullRequestsFragment"
+        tools:layout="@layout/fragment_pull_requests_list">
+        <argument
+            android:name="requestModel"
+            app:argType="com.cvaccari.features.pullrequests.model.PullRequestsRequestModel"
+            app:nullable="false" />
+    </fragment>
 
 </navigation>

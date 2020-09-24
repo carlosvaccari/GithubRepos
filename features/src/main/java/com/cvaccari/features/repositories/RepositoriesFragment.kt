@@ -4,10 +4,12 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cvaccari.features.R
 import com.cvaccari.features.base.BaseFragment
+import com.cvaccari.features.commons.extensions.goTo
 import com.cvaccari.features.commons.extensions.gone
 import com.cvaccari.features.commons.extensions.showFeedback
 import com.cvaccari.features.commons.extensions.visible
 import com.cvaccari.features.commons.listeners.RecyclerViewClickListener
+import com.cvaccari.features.pullrequests.model.PullRequestsRequestModel
 import com.cvaccari.features.repositories.adapter.RepositoriesAdapter
 import com.cvaccari.features.repositories.model.RepositoriesModel
 import kotlinx.android.synthetic.main.error_container.*
@@ -16,7 +18,7 @@ import org.kodein.di.Kodein
 import org.kodein.di.android.x.kodein
 import org.kodein.di.generic.instance
 
-class RepositoriesFragment: BaseFragment(), RepositoriesContract.View, RecyclerViewClickListener {
+class RepositoriesFragment : BaseFragment(), RepositoriesContract.View, RecyclerViewClickListener {
 
     override val kodein: Kodein by kodein()
 
@@ -54,12 +56,17 @@ class RepositoriesFragment: BaseFragment(), RepositoriesContract.View, RecyclerV
 
     override fun showRepositories(items: RepositoriesModel) {
         recyclerview_repositories.layoutManager = LinearLayoutManager(context)
-        recyclerview_repositories.adapter = adapter.apply { this.items = items.items.toMutableList() }
+        recyclerview_repositories.adapter =
+            adapter.apply { this.items = items.items.toMutableList() }
         recyclerview_repositories.visible()
     }
 
     override fun onClick(item: Any) {
-
+        goTo(
+            RepositoriesFragmentDirections.actionFragmentRepositoriesListToFragmentPullRequestsList(
+                item as PullRequestsRequestModel
+            )
+        )
     }
 
     override fun onDestroy() {

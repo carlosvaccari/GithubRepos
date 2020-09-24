@@ -17,19 +17,26 @@ android {
         consumerProguardFiles "consumer-rules.pro"
     }
 
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             buildConfigField("String",
                     "BASE_URL",
-                    "\"https://api.github.com/search/\"")
+                    "\"https://api.github.com/\"")
+            buildConfigField("String",
+                    "GITHUB_BASE_URL",
+                    "\" https://github.com/\"")
         }
 
         debug {
             buildConfigField("String",
                     "BASE_URL",
-                    "\" https://api.github.com/search/\"")
+                    "\"https://api.github.com/\"")
+            buildConfigField("String",
+                    "GITHUB_BASE_URL",
+                    "\" https://github.com/\"")
         }
     }
 

@@ -41,7 +41,7 @@ class RepositoriesPresenterTest {
     }
 
     @Test
-    fun `request platforms types with error, should show error container`() {
+    fun `request repositories with error, should show error container`() {
         every { repository.getRepositories() } returns Single.error(RepositoriesRepositoryHelper.error)
 
         presenter.getRepositories()

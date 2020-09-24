@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import com.cvaccari.core.CoreConstants.CONTEXT_TAG
 import com.cvaccari.core.data.remote.di.networkModule
+import com.cvaccari.features.pullrequests.di.pullRequestsModule
 import com.cvaccari.features.repositories.di.repositoriesModule
 import io.mockk.every
 import io.mockk.mockk
@@ -26,6 +27,7 @@ open class TestApplication : Application(), KodeinAware {
             bind<Context>(tag = CONTEXT_TAG) with provider { this@TestApplication }
             import(networkModule)
             import(repositoriesModule)
+            import(pullRequestsModule)
         }
     }
 }

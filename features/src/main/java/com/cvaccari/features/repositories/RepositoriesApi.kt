@@ -7,7 +7,7 @@ import retrofit2.http.Query
 
 interface RepositoriesApi {
 
-    @GET("repositories")
+    @GET("search/repositories")
     fun getRepositories(
         @Query("q") language: String = DEFAULT_LANGUAGE,
         @Query("page") page: Int = FIRST_PAGE
