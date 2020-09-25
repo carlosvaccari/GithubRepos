@@ -5,5 +5,7 @@
     <string name="try_again">Tentar novamente</string>
     <string name="error">Erro</string>
     <string name="error_generic">Um erro aconteceu. Tente novamente mais tarde.</string>
+    <string name="no_information">Não informado</string>
+    <string name="username_label">Username</string>
 
 </resources>

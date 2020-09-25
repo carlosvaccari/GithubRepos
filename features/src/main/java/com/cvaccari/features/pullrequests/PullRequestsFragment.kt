@@ -6,6 +6,7 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cvaccari.features.R
 import com.cvaccari.features.base.BaseFragment
+import com.cvaccari.features.commons.extensions.addDecorator
 import com.cvaccari.features.commons.extensions.gone
 import com.cvaccari.features.commons.extensions.showFeedback
 import com.cvaccari.features.commons.extensions.visible
@@ -55,6 +56,7 @@ class PullRequestsFragment : BaseFragment(), PullRequestsContract.View, Recycler
 
     override fun showPullRequests(items: List<PullRequestsModel>) {
         recyclerview_pull_requests.layoutManager = LinearLayoutManager(context)
+        recyclerview_pull_requests.addDecorator()
         recyclerview_pull_requests.adapter = adapter.apply { this.items = items.toMutableList() }
         recyclerview_pull_requests.visible()
     }

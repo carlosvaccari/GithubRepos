@@ -4,8 +4,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
 import com.cvaccari.features.R
 import com.cvaccari.features.commons.listeners.RecyclerViewClickListener
 import com.cvaccari.features.pullrequests.model.PullRequestsRequestModel
@@ -47,21 +45,12 @@ class RepositoriesAdapter(
             view.container_repository.setOnClickListener {
                 listener.onClick(
                     PullRequestsRequestModel(
-                        item.owner.login,
+                        item.owner,
                         item.name
                     )
                 )
             }
-            var requestOptions = RequestOptions()
-            requestOptions = requestOptions
-                .error(R.drawable.background_placeholder_oval)
-                .placeholder(R.drawable.background_placeholder_oval)
-
-            Glide.with(view.context)
-                .load(item.owner.image)
-                .apply(requestOptions)
-                .into(view.imageview_user)
-
+            view.imageview_user.setImageFromUrl(item.owner.image)
             view.textview_stars.text = item.stargazersCount.toString()
             view.textview_fork.text = item.forksCount.toString()
             view.textview_repository_name.text = item.name

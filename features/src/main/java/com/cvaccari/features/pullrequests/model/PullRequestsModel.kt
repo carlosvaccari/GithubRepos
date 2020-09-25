@@ -11,10 +11,10 @@ class PullRequestsModel(
     @SerializedName("user") val user: OwnerModel,
     @SerializedName("url") val url: String,
     @SerializedName("number") val number: Int,
-    var organizationName: String = "" ,
+    var ownerOrganization: OwnerModel? = null ,
     var repositoryName: String = ""
 ) {
 
-    fun repoURL() = "${BuildConfig.GITHUB_BASE_URL}$organizationName/$repositoryName/pull/$number"
+    fun repoURL() = "${BuildConfig.GITHUB_BASE_URL}${ownerOrganization?.login}/$repositoryName/pull/$number"
 
 }

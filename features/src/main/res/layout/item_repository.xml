@@ -104,6 +104,7 @@
         android:id="@+id/textview_user_name"
         style="@style/PrimaryMediumSubtitle"
         android:layout_width="wrap_content"
+        android:text="@string/username_label"
         android:layout_height="wrap_content"
         android:textColor="@color/colorPrimary"
         app:layout_constraintBottom_toTopOf="@id/textview_name"
