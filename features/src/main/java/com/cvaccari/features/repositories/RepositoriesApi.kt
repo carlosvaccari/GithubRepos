@@ -10,11 +10,12 @@ interface RepositoriesApi {
     @GET("search/repositories")
     fun getRepositories(
         @Query("q") language: String = DEFAULT_LANGUAGE,
-        @Query("page") page: Int = FIRST_PAGE
+        @Query("page") page: Int,
+        @Query("per_page") itemsPerPage : Int = ITEMS_PER_PAGE
     ): Single<RepositoriesModel>
 
     companion object {
         private const val DEFAULT_LANGUAGE = "language:Kotlin"
-        private const val FIRST_PAGE = 1
+        private const val ITEMS_PER_PAGE = 20
     }
 }

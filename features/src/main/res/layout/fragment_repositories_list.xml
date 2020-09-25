@@ -7,13 +7,12 @@
     android:focusable="true"
     android:layout_height="match_parent">
 
-    <androidx.recyclerview.widget.RecyclerView
+    <com.cvaccari.customviews.recyclerview.CustomRecyclerView
         android:id="@+id/recyclerview_repositories"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/size_xmedium"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="@dimen/size_xxmedium"
         app:layout_constraintTop_toTopOf="parent" />
 
     <include

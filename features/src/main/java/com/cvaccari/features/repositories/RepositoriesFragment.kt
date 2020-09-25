@@ -1,8 +1,8 @@
 package com.cvaccari.features.repositories
 
 import android.view.View
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.cvaccari.customviews.recyclerview.CustomRecyclerView
 import com.cvaccari.features.R
 import com.cvaccari.features.base.BaseFragment
 import com.cvaccari.features.commons.extensions.*
@@ -16,7 +16,8 @@ import org.kodein.di.Kodein
 import org.kodein.di.android.x.kodein
 import org.kodein.di.generic.instance
 
-class RepositoriesFragment : BaseFragment(), RepositoriesContract.View, RecyclerViewClickListener {
+class RepositoriesFragment : BaseFragment(), RepositoriesContract.View, RecyclerViewClickListener,
+    CustomRecyclerView.LoadMoreListener {
 
     override val kodein: Kodein by kodein()
 
@@ -27,7 +28,16 @@ class RepositoriesFragment : BaseFragment(), RepositoriesContract.View, Recycler
     override fun getLayoutResource() = R.layout.fragment_repositories_list
 
     override fun initComponents(view: View) {
+        initRecyclerView()
         init()
+    }
+
+    private fun initRecyclerView() {
+        recyclerview_repositories.layoutManager = LinearLayoutManager(context)
+        recyclerview_repositories.addDecorator()
+        recyclerview_repositories.adapter = adapter
+        recyclerview_repositories.setOnLoadMoreListener(this)
+        recyclerview_repositories.visible()
     }
 
     private fun init() {
@@ -53,12 +63,14 @@ class RepositoriesFragment : BaseFragment(), RepositoriesContract.View, Recycler
     }
 
     override fun showRepositories(items: RepositoriesModel) {
-        recyclerview_repositories.layoutManager = LinearLayoutManager(context)
-        recyclerview_repositories.addDecorator()
-        recyclerview_repositories.adapter = adapter.apply {
-            this.items = items.items.toMutableList()
-        }
-        recyclerview_repositories.visible()
+        recyclerview_repositories.isLoading = false
+        adapter.apply { this.items = items.items.toMutableList() }
+        recyclerview_repositories.startAnim()
+    }
+
+    override fun loadMore() {
+        recyclerview_repositories.isLoading = true
+        presenter.getRepositories()
     }
 
     override fun onClick(item: Any) {

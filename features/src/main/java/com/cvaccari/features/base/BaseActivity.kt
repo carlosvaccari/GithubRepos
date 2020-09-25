@@ -13,8 +13,6 @@ abstract class BaseActivity : AppCompatActivity(), KodeinAware {
 
     override val kodein: Kodein by kodein()
 
-    var mToolbar: Toolbar? = null
-
     @IdRes
     protected abstract fun getToolBarResource(): Int
 
@@ -28,10 +26,10 @@ abstract class BaseActivity : AppCompatActivity(), KodeinAware {
 
         setContentView(getLayoutResource())
 
-        mToolbar = findViewById(getToolBarResource())
-        setSupportActionBar(mToolbar)
+        setSupportActionBar(findViewById(getToolBarResource()))
 
         supportActionBar?.setDisplayShowTitleEnabled(false)
+        supportActionBar?.setHomeButtonEnabled(false)
 
         initComponents()
     }
