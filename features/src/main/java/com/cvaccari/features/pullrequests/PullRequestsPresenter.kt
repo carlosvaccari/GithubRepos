@@ -15,10 +15,6 @@ class PullRequestsPresenter(
             .doOnSubscribe { view.showLoading() }
             .doOnTerminate { view.hideLoading() }
             .subscribe({
-                it.map {
-                    it.organizationName = requestModel.owner
-                    it.repositoryName = requestModel.repository
-                }
                 view.showPullRequests(it)
             }, {
                 view.showErrorContainer()

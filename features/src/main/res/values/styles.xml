@@ -25,6 +25,12 @@
         <item name="android:fontFamily">sans-serif-medium</item>
     </style>
 
+    <style name="PrimaryMediumSubtitle">
+        <item name="android:textSize">@dimen/textsize_h2</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
     <style name="PrimaryRegularLabel">
         <item name="android:textSize">@dimen/textsize_h1</item>
         <item name="android:textColor">@color/black</item>

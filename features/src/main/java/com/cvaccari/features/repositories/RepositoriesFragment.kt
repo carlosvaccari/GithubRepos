@@ -1,6 +1,7 @@
 package com.cvaccari.features.repositories
 
 import android.view.View
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cvaccari.features.R
 import com.cvaccari.features.base.BaseFragment
@@ -56,8 +57,15 @@ class RepositoriesFragment : BaseFragment(), RepositoriesContract.View, Recycler
 
     override fun showRepositories(items: RepositoriesModel) {
         recyclerview_repositories.layoutManager = LinearLayoutManager(context)
-        recyclerview_repositories.adapter =
-            adapter.apply { this.items = items.items.toMutableList() }
+        recyclerview_repositories.addItemDecoration(
+            DividerItemDecoration(
+                requireContext(),
+                DividerItemDecoration.VERTICAL
+            )
+        )
+        recyclerview_repositories.adapter = adapter.apply {
+            this.items = items.items.toMutableList()
+        }
         recyclerview_repositories.visible()
     }
 

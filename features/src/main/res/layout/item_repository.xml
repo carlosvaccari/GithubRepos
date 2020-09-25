@@ -1,12 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container_repository"
-    android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:elevation="3dp"
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/size_xmedium">
 
     <TextView
         android:id="@+id/textview_repository_name"
+        style="@style/PrimaryMediumTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_xmedium"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/guideline"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Nome do repositorio" />
+
+    <TextView
+        android:id="@+id/textview_repository_description"
+        style="@style/PrimaryMediumSubtitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:gravity="center|left"
+        android:maxLines="3"
+        android:minLines="3"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/guideline"
+        app:layout_constraintTop_toBottomOf="@id/textview_repository_name"
+        tools:text="Nome do repositorio" />
+
+    <ImageView
+        android:id="@+id/imageview_fork"
+        android:layout_width="@dimen/size_xxmedium"
+        android:layout_height="@dimen/size_xxmedium"
+        android:layout_marginTop="@dimen/size_medium"
+        android:src="@drawable/ic_fork"
+        app:layout_constraintTop_toBottomOf="@id/textview_repository_description" />
+
+    <TextView
+        android:id="@+id/textview_fork"
+        style="@style/PrimaryMediumSubtitle"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="0"
+        app:layout_constraintBottom_toBottomOf="@id/imageview_fork"
+        app:layout_constraintLeft_toRightOf="@id/imageview_fork"
+        app:layout_constraintTop_toTopOf="@id/imageview_fork" />
+
+
+    <ImageView
+        android:id="@+id/imageview_stars"
+        android:layout_width="@dimen/size_xxmedium"
+        android:layout_height="@dimen/size_xxmedium"
+        android:layout_marginLeft="@dimen/size_xmedium"
+        android:layout_marginTop="@dimen/size_medium"
+        android:src="@drawable/ic_star"
+        app:layout_constraintLeft_toRightOf="@id/textview_fork"
+        app:layout_constraintTop_toBottomOf="@id/textview_repository_description" />
+
+    <TextView
+        android:id="@+id/textview_stars"
+        style="@style/PrimaryMediumSubtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        app:layout_constraintBottom_toBottomOf="@id/imageview_stars"
+        app:layout_constraintLeft_toRightOf="@id/imageview_stars"
+        app:layout_constraintTop_toTopOf="@id/imageview_stars" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.7" />
+
+    <com.cvaccari.customviews.circleimageview.CircleImageView
+        android:id="@+id/imageview_user"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/textview_user_name"
+        app:layout_constraintLeft_toRightOf="@id/guideline"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/textview_repository_name" />
+
+    <TextView
+        android:id="@+id/textview_name"
+        style="@style/PrimaryRegularLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/textview_fork"
+        app:layout_constraintLeft_toRightOf="@id/guideline"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:text="Nome Sobrenome" />
+
+    <TextView
+        android:id="@+id/textview_user_name"
+        style="@style/PrimaryMediumSubtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintBottom_toTopOf="@id/textview_name"
+        app:layout_constraintLeft_toRightOf="@id/guideline"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:text="username" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
