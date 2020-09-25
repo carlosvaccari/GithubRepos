@@ -10,3 +10,5 @@
  
  Foram implementados apenas testes unitários, pois os testes com Robolectric já conseguem remover grande parte da necessidade dos testes instrumentados, além de diminuir o tempo de execução.
 
+
+<img src="ui.gif" width="350"/>
