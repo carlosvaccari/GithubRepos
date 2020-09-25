@@ -35,8 +35,8 @@ class RepositoriesFragment : BaseFragment(), RepositoriesContract.View, Recycler
     private fun initRecyclerView() {
         recyclerview_repositories.layoutManager = LinearLayoutManager(context)
         recyclerview_repositories.addDecorator()
-        recyclerview_repositories.adapter = adapter
         recyclerview_repositories.setOnLoadMoreListener(this)
+        recyclerview_repositories.adapter = adapter
         recyclerview_repositories.visible()
     }
 
