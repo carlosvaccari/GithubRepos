@@ -5,7 +5,7 @@
     android:id="@+id/container_pull_request"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
+    android:background="?attr/selectableItemBackground"
     android:elevation="3dp"
     android:paddingBottom="@dimen/size_xmedium">
 
