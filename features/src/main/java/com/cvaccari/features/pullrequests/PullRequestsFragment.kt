@@ -70,7 +70,7 @@ class PullRequestsFragment : BaseFragment(), PullRequestsContract.View, Recycler
     override fun showPullRequests(items: List<PullRequestsModel>) {
         recyclerview_pull_requests.isLoading = false
         adapter.apply { this.items = items.toMutableList() }
-        recyclerview_repositories.startAnim()
+        recyclerview_pull_requests.startAnim()
     }
 
     private fun init() {

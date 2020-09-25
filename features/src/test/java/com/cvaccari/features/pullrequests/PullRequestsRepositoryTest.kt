@@ -1,5 +1,6 @@
 package com.cvaccari.features.pullrequests
 
+import com.cvaccari.features.pullrequests.PullRequestsHelper.currentPage
 import com.cvaccari.features.pullrequests.PullRequestsHelper.request
 import com.cvaccari.features.pullrequests.PullRequestsHelper.successfulPullRequestRequest
 import io.mockk.every
@@ -30,7 +31,7 @@ class PullRequestsRepositoryTest {
         val requestModel = request
 
         //Given
-        every { api.getPullRequests(requestModel.owner, requestModel.repository) } returns Single.just(response)
+        every { api.getPullRequests(requestModel.owner.login, requestModel.repository, currentPage) } returns Single.just(response)
 
         //When
         val testObservable = repository.getPullRequests(requestModel).test()
@@ -47,7 +48,7 @@ class PullRequestsRepositoryTest {
         val requestModel = request
 
         //Given
-        every { api.getPullRequests(requestModel.owner, requestModel.repository) } returns Single.error(response)
+        every { api.getPullRequests(requestModel.owner.login, requestModel.repository, currentPage) } returns Single.error(response)
 
         //When
         val testObservable = repository.getPullRequests(requestModel).test()

@@ -18,7 +18,6 @@ import androidx.appcompat.widget.AppCompatImageView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
-import com.bumptech.glide.signature.ObjectKey
 import com.cvaccari.customviews.R
 
 open class CircleImageView @JvmOverloads constructor(
@@ -145,7 +144,6 @@ open class CircleImageView @JvmOverloads constructor(
             .apply(RequestOptions().apply {
                 this.error(R.drawable.background_placeholder_oval)
                     .placeholder(R.drawable.background_placeholder_oval)
-                    .signature(ObjectKey(url))
                     .diskCacheStrategy(DiskCacheStrategy.DATA)
             })
             .into(this)

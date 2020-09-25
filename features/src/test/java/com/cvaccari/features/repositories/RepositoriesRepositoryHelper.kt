@@ -20,5 +20,7 @@ object RepositoriesRepositoryHelper {
         )
     )
 
+    val currentPage = 1
+
     val error = Exception()
 }
