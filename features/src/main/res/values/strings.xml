@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">DesafioLuizaLabs</string>
+    <string name="app_name">Desafio Luiza Labs</string>
 
     //General
     <string name="try_again">Tentar novamente</string>
