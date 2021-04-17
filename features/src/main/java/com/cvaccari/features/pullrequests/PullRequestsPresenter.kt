@@ -13,7 +13,7 @@ class PullRequestsPresenter(
     override fun getPullRequests(requestModel: PullRequestsRequestModel) {
         disposable = repository.getPullRequests(requestModel)
             .doOnSubscribe { view.showLoading() }
-            .doOnTerminate { view.hideLoading() }
+            .doFinally { view.hideLoading() }
             .subscribe({
                 view.showPullRequests(it)
             }, {

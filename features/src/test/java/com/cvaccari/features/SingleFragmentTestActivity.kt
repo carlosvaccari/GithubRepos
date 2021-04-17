@@ -1,8 +1,10 @@
 package com.cvaccari.features
 
 import androidx.annotation.RestrictTo
+import androidx.fragment.app.Fragment
+import androidx.viewbinding.ViewBinding
 import com.cvaccari.features.base.BaseActivity
-import com.cvaccari.features.base.BaseFragment
+import com.cvaccari.features.base.BindableBaseFragment
 
 @RestrictTo(RestrictTo.Scope.TESTS)
 class SingleFragmentTestActivity : BaseActivity() {
@@ -18,7 +20,7 @@ class SingleFragmentTestActivity : BaseActivity() {
     override fun initComponents() {
     }
 
-    fun setupFragment(fragment: BaseFragment) {
+    fun setupFragment(fragment: Fragment) {
         val fm = supportFragmentManager
 
         if (intent.hasExtra(EXTRAS)) {

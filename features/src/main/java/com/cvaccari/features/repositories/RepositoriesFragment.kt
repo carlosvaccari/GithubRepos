@@ -4,19 +4,19 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cvaccari.customviews.recyclerview.CustomRecyclerView
 import com.cvaccari.features.R
-import com.cvaccari.features.base.BaseFragment
+import com.cvaccari.features.base.BindableBaseFragment
 import com.cvaccari.features.commons.extensions.*
 import com.cvaccari.features.commons.listeners.RecyclerViewClickListener
+import com.cvaccari.features.databinding.FragmentRepositoriesListBinding
 import com.cvaccari.features.pullrequests.model.PullRequestsRequestModel
 import com.cvaccari.features.repositories.adapter.RepositoriesAdapter
 import com.cvaccari.features.repositories.model.RepositoriesModel
-import kotlinx.android.synthetic.main.error_container.*
-import kotlinx.android.synthetic.main.fragment_repositories_list.*
 import org.kodein.di.Kodein
 import org.kodein.di.android.x.kodein
 import org.kodein.di.generic.instance
 
-class RepositoriesFragment : BaseFragment(), RepositoriesContract.View, RecyclerViewClickListener,
+class RepositoriesFragment : BindableBaseFragment<FragmentRepositoriesListBinding>(),
+    RepositoriesContract.View, RecyclerViewClickListener,
     CustomRecyclerView.LoadMoreListener {
 
     override val kodein: Kodein by kodein()
@@ -27,17 +27,19 @@ class RepositoriesFragment : BaseFragment(), RepositoriesContract.View, Recycler
 
     override fun getLayoutResource() = R.layout.fragment_repositories_list
 
-    override fun initComponents(view: View) {
+    override fun initializeViewBinding(view: View) = FragmentRepositoriesListBinding.bind(view)
+
+    override fun initComponents(binding: FragmentRepositoriesListBinding) {
         initRecyclerView()
         init()
     }
 
     private fun initRecyclerView() {
-        recyclerview_repositories.layoutManager = LinearLayoutManager(context)
-        recyclerview_repositories.addDecorator()
-        recyclerview_repositories.setOnLoadMoreListener(this)
-        recyclerview_repositories.adapter = adapter
-        recyclerview_repositories.visible()
+        binding.recyclerviewRepositories.layoutManager = LinearLayoutManager(context)
+        binding.recyclerviewRepositories.addDecorator()
+        binding.recyclerviewRepositories.setOnLoadMoreListener(this)
+        binding.recyclerviewRepositories.adapter = adapter
+        binding.recyclerviewRepositories.visible()
     }
 
     private fun init() {
@@ -45,31 +47,29 @@ class RepositoriesFragment : BaseFragment(), RepositoriesContract.View, Recycler
     }
 
     override fun showLoading() {
-        container_loading.visible()
-        container_error.gone()
+        binding.containerLoading.containerLoading.visible()
+        binding.containerError.contentError.gone()
     }
 
     override fun hideLoading() {
-        container_loading.gone()
+        binding.containerLoading.containerLoading.gone()
     }
 
-    override fun showErrorMessage(message: String?) {
-        view.showFeedback(message)
-    }
+    override fun showErrorMessage(message: String?) = view.showFeedback(message)
 
-    override fun showErrorContainer() {
-        container_error.visible()
-        button_try_again.setOnClickListener { init() }
+    override fun showErrorContainer() = with(binding.containerError) {
+        contentError.visible()
+        buttonTryAgain.setOnClickListener { init() }
     }
 
     override fun showRepositories(items: RepositoriesModel) {
-        recyclerview_repositories.isLoading = false
+        binding.recyclerviewRepositories.isLoading = false
         adapter.apply { this.items = items.items.toMutableList() }
-        recyclerview_repositories.startAnim()
+        binding.recyclerviewRepositories.startAnim()
     }
 
     override fun loadMore() {
-        recyclerview_repositories.isLoading = true
+        binding.recyclerviewRepositories.isLoading = true
         presenter.getRepositories()
     }
 

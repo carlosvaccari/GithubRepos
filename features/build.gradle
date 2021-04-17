@@ -42,6 +42,9 @@ android {
         animationsDisabled = true
         execution 'ANDROIDX_TEST_ORCHESTRATOR'
     }
+    viewBinding {
+        enabled = true
+    }
 }
 
 dependencies {

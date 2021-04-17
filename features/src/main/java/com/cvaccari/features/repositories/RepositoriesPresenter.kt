@@ -12,7 +12,7 @@ class RepositoriesPresenter(
     override fun getRepositories() {
         disposable = repository.getRepositories()
             .doOnSubscribe { view.showLoading() }
-            .doOnTerminate { view.hideLoading() }
+            .doFinally { view.hideLoading() }
             .subscribe({
                 view.showRepositories(it)
             }, {
