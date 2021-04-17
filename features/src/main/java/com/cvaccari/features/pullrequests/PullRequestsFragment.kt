@@ -2,8 +2,8 @@ package com.cvaccari.features.pullrequests
 
 import android.content.Intent
 import android.net.Uri
-import android.os.Bundle
 import android.view.View
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cvaccari.customviews.recyclerview.CustomRecyclerView
 import com.cvaccari.features.R
@@ -28,6 +28,8 @@ class PullRequestsFragment : BindableBaseFragment<FragmentPullRequestsListBindin
     override val kodein: Kodein by kodein()
 
     private val presenter: PullRequestsContract.Presenter by instance { this }
+
+    private val args by navArgs<PullRequestsFragmentArgs>()
 
     override fun initializeViewBinding(view: View) = FragmentPullRequestsListBinding.bind(view)
 
@@ -70,19 +72,13 @@ class PullRequestsFragment : BindableBaseFragment<FragmentPullRequestsListBindin
         binding.recyclerviewPullRequests.startAnim()
     }
 
-    private fun init() {
-        arguments?.apply {
-            presenter.getPullRequests(getArgs())
-        }
-    }
-
-    private fun getArgs() = PullRequestsFragmentArgs.fromBundle(arguments ?: Bundle()).requestModel
+    private fun init() = presenter.getPullRequests(args.requestModel)
 
     override fun onClick(item: Any) = startActivity(Intent(Intent.ACTION_VIEW, item as Uri))
 
     override fun loadMore() {
         binding.recyclerviewPullRequests.isLoading = true
-        presenter.getPullRequests(getArgs())
+        presenter.getPullRequests(args.requestModel)
     }
 
     override fun onDestroy() {
