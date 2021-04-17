@@ -55,6 +55,10 @@ class RepositoriesFragment : BindableBaseFragment<FragmentRepositoriesListBindin
         binding.containerLoading.containerLoading.gone()
     }
 
+    override fun showProgressBar() = binding.progressbar.visible()
+
+    override fun hideProgressBar() = binding.progressbar.gone()
+
     override fun showErrorMessage(message: String?) = view.showFeedback(message)
 
     override fun showErrorContainer() = with(binding.containerError) {
@@ -70,7 +74,7 @@ class RepositoriesFragment : BindableBaseFragment<FragmentRepositoriesListBindin
 
     override fun loadMore() {
         binding.recyclerviewRepositories.isLoading = true
-        presenter.getRepositories()
+        presenter.getRepositories(true)
     }
 
     override fun onClick(item: Any) {

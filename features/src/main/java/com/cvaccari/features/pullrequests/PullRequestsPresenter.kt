@@ -10,16 +10,20 @@ class PullRequestsPresenter(
 
     var disposable: Disposable? = null
 
-    override fun getPullRequests(requestModel: PullRequestsRequestModel) {
+    override fun getPullRequests(requestModel: PullRequestsRequestModel, isLoadingMore: Boolean) {
         disposable = repository.getPullRequests(requestModel)
-            .doOnSubscribe { view.showLoading() }
-            .doFinally { view.hideLoading() }
+            .doOnSubscribe { showLoading(isLoadingMore) }
+            .doFinally { hideLoading(isLoadingMore) }
             .subscribe({
                 view.showPullRequests(it)
             }, {
                 view.showErrorContainer()
             })
     }
+
+    private fun hideLoading(isLoadingMore: Boolean) = if (isLoadingMore) view.hideProgressBar() else view.hideLoading()
+
+    private fun showLoading(isLoadingMore: Boolean) = if(isLoadingMore) view.showProgressBar() else view.showLoading()
 
     override fun dispose() {
         disposable?.dispose()

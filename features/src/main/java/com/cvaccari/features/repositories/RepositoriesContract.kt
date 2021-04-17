@@ -12,10 +12,12 @@ interface RepositoriesContract {
         fun showErrorMessage(message: String?)
         fun showErrorContainer()
         fun showRepositories(it: RepositoriesModel)
+        fun showProgressBar()
+        fun hideProgressBar()
     }
 
     interface Presenter {
-        fun getRepositories()
+        fun getRepositories(isLoadingMore: Boolean = false)
         fun dispose()
     }
 

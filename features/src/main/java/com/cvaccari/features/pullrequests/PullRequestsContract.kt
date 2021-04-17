@@ -12,10 +12,12 @@ interface PullRequestsContract {
         fun showErrorMessage(message: String?)
         fun showErrorContainer()
         fun showPullRequests(items: List<PullRequestsModel>)
+        fun showProgressBar()
+        fun hideProgressBar()
     }
 
     interface Presenter {
-        fun getPullRequests(requestModel: PullRequestsRequestModel)
+        fun getPullRequests(requestModel: PullRequestsRequestModel, isLoadingMore: Boolean = false)
         fun dispose()
     }
 

@@ -52,12 +52,16 @@ class PullRequestsFragment : BindableBaseFragment<FragmentPullRequestsListBindin
 
     override fun showLoading() {
         binding.containerLoading.containerLoading.visible()
-        binding.containerError.contentError.visible()
+        binding.containerError.contentError.gone()
     }
 
     override fun hideLoading() {
         binding.containerLoading.containerLoading.gone()
     }
+
+    override fun showProgressBar() = binding.progressbar.visible()
+
+    override fun hideProgressBar() = binding.progressbar.gone()
 
     override fun showErrorMessage(message: String?) = view.showFeedback(message)
 
@@ -78,7 +82,7 @@ class PullRequestsFragment : BindableBaseFragment<FragmentPullRequestsListBindin
 
     override fun loadMore() {
         binding.recyclerviewPullRequests.isLoading = true
-        presenter.getPullRequests(args.requestModel)
+        presenter.getPullRequests(args.requestModel, true)
     }
 
     override fun onDestroy() {

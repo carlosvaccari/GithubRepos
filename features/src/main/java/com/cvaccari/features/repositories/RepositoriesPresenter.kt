@@ -9,16 +9,20 @@ class RepositoriesPresenter(
 
     var disposable: Disposable? = null
 
-    override fun getRepositories() {
+    override fun getRepositories(isLoadingMore: Boolean) {
         disposable = repository.getRepositories()
-            .doOnSubscribe { view.showLoading() }
-            .doFinally { view.hideLoading() }
+            .doOnSubscribe { showLoading(isLoadingMore) }
+            .doFinally { hideLoading(isLoadingMore) }
             .subscribe({
                 view.showRepositories(it)
             }, {
                 view.showErrorContainer()
             })
     }
+
+    private fun hideLoading(isLoadingMore: Boolean) = if (isLoadingMore) view.hideProgressBar() else view.hideLoading()
+
+    private fun showLoading(isLoadingMore: Boolean) = if(isLoadingMore) view.showProgressBar() else view.showLoading()
 
     override fun dispose() {
         disposable?.dispose()

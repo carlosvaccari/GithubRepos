@@ -10,10 +10,18 @@
     <com.cvaccari.customviews.recyclerview.CustomRecyclerView
         android:id="@+id/recyclerview_repositories"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/size_xmedium"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/size_xmedium"
+        app:layout_constraintBottom_toTopOf="@id/progressbar"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progressbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
     <include
         android:id="@+id/container_loading"

@@ -28,10 +28,12 @@ class CustomRecyclerView @JvmOverloads constructor(
     }
 
     fun startAnim() {
-        val controller =
-            AnimationUtils.loadLayoutAnimation(context, R.anim.layout_animation_wave)
-        layoutAnimation = controller
-        scheduleLayoutAnimation()
+        if (layoutManager?.childCount == 0) {
+            val controller =
+                AnimationUtils.loadLayoutAnimation(context, R.anim.layout_animation_wave)
+            layoutAnimation = controller
+            scheduleLayoutAnimation()
+        }
     }
 
     override fun onScrolled(dx: Int, dy: Int) {
