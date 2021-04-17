@@ -5,7 +5,7 @@
     <item>
         <bitmap
             android:gravity="center"
-            android:src="@drawable/ic_luizalabs" />
+            android:src="@drawable/ic_github" />
     </item>
 
 </layer-list>

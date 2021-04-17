@@ -1,4 +1,4 @@
-package com.cvaccari.desafioluizalabs
+package com.cvaccari.gitrepos
 
 import android.app.Application
 import android.content.Context

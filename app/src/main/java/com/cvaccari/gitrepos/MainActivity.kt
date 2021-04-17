@@ -1,4 +1,4 @@
-package com.cvaccari.desafioluizalabs
+package com.cvaccari.gitrepos
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

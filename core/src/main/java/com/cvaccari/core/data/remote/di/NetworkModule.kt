@@ -37,7 +37,7 @@ val networkModule = Kodein.Module("networkModule") {
         val builder = OkHttpClient.Builder()
 
         if (DEBUG) {
-            builder.addInterceptor(instance(LOG_INTERCEPTOR))
+            builder.addInterceptor(instance<Interceptor>(LOG_INTERCEPTOR))
         }
 
         builder.build()

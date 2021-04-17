@@ -2,4 +2,4 @@ include ':customviews'
 include ':features'
 include ':core'
 include ':app'
-rootProject.name = "DesafioLuizaLabs"
+rootProject.name = "Desafio"

@@ -7,7 +7,7 @@ android {
     buildToolsVersion "30.0.2"
 
     defaultConfig {
-        applicationId "com.cvaccari.desafioluizalabs"
+        applicationId "com.cvaccari.desafio"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
