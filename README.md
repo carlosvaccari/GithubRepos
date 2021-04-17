@@ -1,5 +1,3 @@
-# DesafioLuizaLabs
-
 # Objetivo:
 ## Criar um fluxo mostre repositorios em koltin e seus respectivos PRs.
 
